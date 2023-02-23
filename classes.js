@@ -26,8 +26,6 @@ class Sprite {
         this.image.onload = () => {
            this.width = this.image.width / this.frames.max 
            this.height = this.image.height 
-           console.log(this.width)
-           console.log(this.height)
         }
 
         this.moving = false 
@@ -98,7 +96,7 @@ const background = new Sprite({
 
 
 
-//boundary class for collision detection 
+//boundary class for collision detection && battle zones 
 class Boundary {
     static width = 48
     static height = 48 
@@ -113,10 +111,15 @@ class Boundary {
     }
 }
 
-//collision detection 
+//collision detection functionality for collisions && battle zones 
 const collisionsMap = []
 for(let i=0; i<collisions.length; i+=70){
     collisionsMap.push(collisions.slice(i, 70+i))
+}
+
+const battleZonesMap = []
+for(let i=0; i<battleZonesData.length; i+=70){
+    battleZonesMap.push(battleZonesData.slice(i, 70+i))
 }
 
 const boundaries = []
@@ -139,12 +142,19 @@ collisionsMap.forEach((row, i) => {
     })
 })
 
-const testBoundary = new Boundary({
-    position: {
-        x: 400,
-        y: 400
-    }
-})
+const battleZones = []
+
+
+
+
+
+
+// const testBoundary = new Boundary({
+//     position: {
+//         x: 400,
+//         y: 400
+//     }
+// })
 
 
 
