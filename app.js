@@ -113,8 +113,11 @@ function animate(){
 
 
     let moving = true 
+    player.moving = false 
     //player mobility 
     if(keys.w.pressed && lastKey==='w'){
+        player.moving = true 
+        player.image = player.sprites.up
         for (const boundary of boundaries) {
             if(
                 rectangularCollision({
@@ -137,11 +140,10 @@ function animate(){
         movables.forEach((movable) => {
             movable.position.y += 3
         })
-
-        // background.position.y += 3
-        // boundaries.position.y += 3
     } 
     else if(keys.s.pressed && lastKey==='s'){
+        player.moving = true 
+        player.image = player.sprites.down
         for (const boundary of boundaries) {
             if(
                 rectangularCollision({
@@ -164,10 +166,10 @@ function animate(){
         movables.forEach((movable) => {
             movable.position.y -= 3
         })
-        // background.position.y -= 3
-        // boundaries.position.y -= 3
     }  
     else if(keys.a.pressed && lastKey==='a'){
+        player.moving = true 
+        player.image = player.sprites.left 
         for (const boundary of boundaries) {
             if(
                 rectangularCollision({
@@ -190,9 +192,10 @@ function animate(){
         movables.forEach((movable) => {
             movable.position.x += 3
         })
-        // background.position.x += 3
     } 
     else if(keys.d.pressed && lastKey==='d'){
+        player.moving = true 
+        player.image = player.sprites.right
         for (const boundary of boundaries) {
             if(
                 rectangularCollision({
@@ -215,7 +218,6 @@ function animate(){
         movables.forEach((movable) => {
             movable.position.x -= 3
         })
-        // background.position.x -= 3
     } 
 }
 animate()

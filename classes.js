@@ -6,14 +6,22 @@ ctx.drawImage(image, 0, 0)
 //playerDown 
 const playerDownImage = new Image()
 playerDownImage.src = './images/player/playerDown.png'
-
+//playerUp
+const playerUpImage = new Image()
+playerUpImage.src = './images/player/playerUp.png'
+//playerRight
+const playerRightImage = new Image()
+playerRightImage.src = './images/player/playerRight.png'
+//playerLeft
+const playerLeftImage = new Image()
+playerLeftImage.src = './images/player/playerLeft.png'
 
 //sprite class
 class Sprite {
-    constructor({ position, velocity, image, frames = { max: 1 } }) {
+    constructor({ position, velocity, image, frames = { max: 1 }, sprites }) {
         this.position = position
         this.image = image 
-        this.frames = frames
+        this.frames = {...frames, val: 0, elapsed: 0}
 
         this.image.onload = () => {
            this.width = this.image.width / this.frames.max 
@@ -21,13 +29,16 @@ class Sprite {
            console.log(this.width)
            console.log(this.height)
         }
+
+        this.moving = false 
+        this.sprites = sprites
         
     }
     draw(){
         // ctx.drawImage(this.image, this.position.x, this.position.y)
         ctx.drawImage(
             this.image, 
-            0, 
+            this.frames.val * this.width, 
             0, 
             this.image.width/this.frames.max, 
             this.image.height, 
@@ -36,6 +47,19 @@ class Sprite {
             this.image.width/this.frames.max, 
             this.image.height
             )
+
+            if(!this.moving) return 
+            
+            if(this.frames.max > 1){
+                this.frames.elapsed++
+            }
+            
+            if(this.frames.elapsed % 30 === 0){
+                if(this.frames.val < this.frames.max - 1) this.frames.val++
+                else this.frames.val = 0 
+            }
+
+            
     }
 }
 
@@ -48,8 +72,16 @@ const player = new Sprite({
     image: playerDownImage,
     frames: {
         max: 4
+    },
+    sprites: {
+        up: playerUpImage,
+        down: playerDownImage,
+        left: playerLeftImage,
+        right: playerRightImage
     }
 })
+
+
 
 
 const background = new Sprite({
