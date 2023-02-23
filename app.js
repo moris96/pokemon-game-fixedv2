@@ -97,7 +97,8 @@ function rectangularCollision({rectangle1, rectangle2}){
 
 
 
-////////////////////////////////////////////////////////// ANIMATE GAME //////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////// ANIMATE GAME //////////////////////////////////////////////////////////////////////////////////
+
 
 
 //animate game
@@ -106,14 +107,35 @@ function animate(){
     background.draw()
 
     
-    // draw boundaries 
+    //draw boundaries 
     boundaries.forEach(boundary => {
         boundary.draw()
-
-
     })
 
+    //draw battle zones 
+    battleZones.forEach((battleZone) => {
+        battleZone.draw()
+    })
+
+
     player.draw()
+
+    if(keys.w.pressed || keys.a.pressed || keys.s.pressed || keys.d.pressed){
+        for (const battleZone of battleZones) {
+            const overlappingArea = (Math.min(player.position.x + player.width, battleZone.position.x + battleZone.width) - Math.max(player.position.x, battleZone.position.x)) * Math.min(player.position.y + player.height, battleZone.position.y + battleZone.height) - Math.max(player.position.y, battleZone.position.y)
+            if(
+                rectangularCollision({
+                    rectangle1: player,
+                    rectangle2: battleZone
+                }) && 
+                overlappingArea > (player.width * player.height) / 2
+                && Math.random() < 0.001
+            ) {
+                console.log('battle zone collision')
+                break 
+            }
+        }
+    }
 
     
 

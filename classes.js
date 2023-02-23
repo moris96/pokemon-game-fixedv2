@@ -1,4 +1,4 @@
-//load images
+/////////////////////////////////////////////////////////////////////////////////////// LOAD IMAGES //////////////////////////////////////////////////////////////////////////////////
 //background
 const image = new Image()
 image.src = './images/gameMap.png'
@@ -16,7 +16,8 @@ playerRightImage.src = './images/player/playerRight.png'
 const playerLeftImage = new Image()
 playerLeftImage.src = './images/player/playerLeft.png'
 
-//sprite class
+
+/////////////////////////////////////////////////////////////////////////////////////// SPRITE CLASS //////////////////////////////////////////////////////////////////////////////////
 class Sprite {
     constructor({ position, velocity, image, frames = { max: 1 }, sprites }) {
         this.position = position
@@ -52,7 +53,7 @@ class Sprite {
                 this.frames.elapsed++
             }
             
-            if(this.frames.elapsed % 30 === 0){
+            if(this.frames.elapsed % 20 === 0){
                 if(this.frames.val < this.frames.max - 1) this.frames.val++
                 else this.frames.val = 0 
             }
@@ -92,10 +93,11 @@ const background = new Sprite({
 
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
+
+/////////////////////////////////////////////////////////////////////////////////////// BOUNDARY CLASS ////////////////////////////////////////////////////////////////////////////////
 //boundary class for collision detection && battle zones 
 class Boundary {
     static width = 48
@@ -143,6 +145,19 @@ collisionsMap.forEach((row, i) => {
 })
 
 const battleZones = []
+battleZonesMap.forEach((row, i) => {
+    row.forEach((symbol, j) => {
+        if(symbol === 1025)
+        battleZones.push(
+            new Boundary({
+                position: {
+                    x: j * Boundary.width + offset.x,
+                    y: i * Boundary.height + offset.y
+                }
+            })
+        )
+    })
+})
 
 
 
@@ -158,9 +173,9 @@ const battleZones = []
 
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
+/////////////////////////////////////////////////////////////////////////////////////// MOVABLES ARR //////////////////////////////////////////////////////////////////////////////////
 //movables object for animate in app.js 
-const movables = [background, ...boundaries]
+const movables = [background, ...boundaries, ...battleZones]
