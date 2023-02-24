@@ -104,7 +104,7 @@ const battle = {
 
 function animate(){
     const animationID = window.requestAnimationFrame(animate)
-    console.log(animationID)
+
     background.draw()
 
     
@@ -149,11 +149,16 @@ function animate(){
                     onComplete(){
                         gsap.to('#overlapping-div', {
                             opacity: 1,
-                            duration: 0.4
+                            duration: 0.4,
+                            onComplete() {
+                                //activate new animation loop
+                                animateBattle()
+                                gsap.to('#overlapping-div', {
+                                    opacity: 0,
+                                    duration: 0.4
+                                })
+                            }
                         })
-
-                        //activate new animation loop
-                        animateBattle()
                     }
                 })
                 break 
@@ -183,7 +188,6 @@ function animate(){
                 }
                 })
             ) {
-                // console.log('colliding up')
                 moving = false 
                 break 
             }
@@ -210,7 +214,6 @@ function animate(){
                 }
                 })
             ) {
-                // console.log('colliding down')
                 moving = false 
                 break 
             }
@@ -237,7 +240,6 @@ function animate(){
                 }
                 })
             ) {
-                // console.log('colliding left')
                 moving = false 
                 break 
             }
@@ -266,7 +268,6 @@ function animate(){
             }
             })
         ) {
-            // console.log('colliding right')
             moving = false 
             break 
         }
@@ -277,12 +278,12 @@ function animate(){
     }) 
     return;
 }
-animate()
+// animate()
+
 
 
 function animateBattle(){
     window.requestAnimationFrame(animateBattle)
-    console.log('animating battle')
+    battleBackground.draw()
 }
-
-
+animateBattle()
