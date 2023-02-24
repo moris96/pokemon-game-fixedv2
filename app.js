@@ -1,5 +1,3 @@
-// import { collisions } from "./collisions/collisions"
-// import { background } from "./classes"
 
 //load & draw canvas
 const canvas = document.querySelector('canvas')
@@ -18,11 +16,12 @@ ctx.fillRect(0,0,canvas.width,canvas.height)
 // console.log(battleZonesMap)
 
 
-
-
-
-
-
+// gsap.to('#overlapping-div', {
+//     opacity: 1,
+//     repeat: 3,
+//     yoyo: true,
+//     duration: 0.4
+// })
 
 
 const keys = {
@@ -94,16 +93,18 @@ function rectangularCollision({rectangle1, rectangle2}){
 }
 
 
+const battle = {
+    initiated: false 
+}
+
 
 
 
 /////////////////////////////////////////////////////////////////////////////////////// ANIMATE GAME //////////////////////////////////////////////////////////////////////////////////
 
-
-
-//animate game
 function animate(){
-    window.requestAnimationFrame(animate)
+    const animationID = window.requestAnimationFrame(animate)
+    console.log(animationID)
     background.draw()
 
     
@@ -120,6 +121,11 @@ function animate(){
 
     player.draw()
 
+    let moving = true 
+    player.moving = false 
+
+    if(battle.initiated) return 
+
     if(keys.w.pressed || keys.a.pressed || keys.s.pressed || keys.d.pressed){
         for (const battleZone of battleZones) {
             const overlappingArea = (Math.min(player.position.x + player.width, battleZone.position.x + battleZone.width) - Math.max(player.position.x, battleZone.position.x)) * Math.min(player.position.y + player.height, battleZone.position.y + battleZone.height) - Math.max(player.position.y, battleZone.position.y)
@@ -131,7 +137,25 @@ function animate(){
                 overlappingArea > (player.width * player.height) / 2
                 && Math.random() < 0.001
             ) {
-                console.log('battle zone collision')
+                console.log('activate battle')
+                //deactivate current animation loop 
+                window.cancelAnimationFrame(animationID)
+                battle.initiated = true 
+                gsap.to('#overlapping-div', {
+                    opacity: 1,
+                    repeat: 3,
+                    yoyo: true,
+                    duration: 0.4,
+                    onComplete(){
+                        gsap.to('#overlapping-div', {
+                            opacity: 1,
+                            duration: 0.4
+                        })
+
+                        //activate new animation loop
+                        animateBattle()
+                    }
+                })
                 break 
             }
         }
@@ -142,8 +166,6 @@ function animate(){
     // ctx.drawImage(playerDownImage, 0, 0, playerDownImage.width/4, playerDownImage.height, canvas.width/2 - playerDownImage.width/2, canvas.height/2 - playerDownImage.height/4, playerDownImage.width/4, playerDownImage.height)
 
 
-    let moving = true 
-    player.moving = false 
     //player mobility 
     if(keys.w.pressed && lastKey==='w'){
         player.moving = true 
@@ -256,5 +278,11 @@ function animate(){
     return;
 }
 animate()
+
+
+function animateBattle(){
+    window.requestAnimationFrame(animateBattle)
+    console.log('animating battle')
+}
 
 
