@@ -122,7 +122,7 @@ function animate(){
     player.draw()
 
     let moving = true 
-    player.moving = false 
+    player.animate = false 
 
     if(battle.initiated) return 
 
@@ -173,7 +173,7 @@ function animate(){
 
     //player mobility 
     if(keys.w.pressed && lastKey==='w'){
-        player.moving = true 
+        player.animate = true 
         player.image = player.sprites.up
         for (const boundary of boundaries) {
             if(
@@ -199,7 +199,7 @@ function animate(){
         return;
     } 
     if(keys.s.pressed && lastKey==='s'){
-        player.moving = true 
+        player.animate = true 
         player.image = player.sprites.down
         for (const boundary of boundaries) {
             if(
@@ -225,7 +225,7 @@ function animate(){
         return;
     } 
     if(keys.a.pressed && lastKey==='a'){
-        player.moving = true 
+        player.animate = true 
         player.image = player.sprites.left 
         for (const boundary of boundaries) {
             if(
@@ -253,7 +253,7 @@ function animate(){
     if(!(keys.d.pressed && lastKey==='d')){
         return;
     } 
-    player.moving = true 
+    player.animate = true 
     player.image = player.sprites.right
     for (const boundary of boundaries) {
         if(
@@ -285,5 +285,7 @@ function animate(){
 function animateBattle(){
     window.requestAnimationFrame(animateBattle)
     battleBackground.draw()
+    elon.draw()
+    charizard.draw()
 }
 animateBattle()
