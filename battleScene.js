@@ -54,17 +54,18 @@ const charizard = new Sprite({
 
 ////////////////////////BATTLE!!!/////////////////////////////////////////////////////////////////////////////
 
+const renderedSprites = [elon, charizard]
+
+
 
 
 document.querySelectorAll('button').forEach((button) => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', (e) => {
+        const selectedAttack = attacks[e.currentTarget.innerHTML]
         charizard.attack({
-            attack: {
-                name: 'Slash',
-                damage: 10,
-                type: 'Normal'
-            },
-            recipient: elon 
+            attack: selectedAttack,
+            recipient: elon,
+            renderedSprites
         })
     })
 })

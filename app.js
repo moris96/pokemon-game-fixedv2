@@ -280,13 +280,17 @@ function animate(){
 }
 
 
-
+// const renderedSprites = []
 function animateBattle(){
     window.requestAnimationFrame(animateBattle)
     battleBackground.draw()
     elon.draw()
     charizard.draw()
-}
+
+    renderedSprites.forEach((sprite) => {
+        sprite.draw()
+    })
+};
 
 // animate()
 animateBattle()
