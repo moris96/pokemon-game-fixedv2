@@ -118,7 +118,51 @@ class Sprite {
                         renderedSprites.splice(1, 1)
                     }
                 })
+                break; 
 
+                case 'Dragon Pulse':
+                const dragonPulseImage = new Image()
+                dragonPulseImage.src = './images/moves/dragonpulse.png'
+                const dragonPulse = new Sprite({
+                    position: {
+                        x: this.position.x,
+                        y: this.position.y 
+                    },
+                    image: dragonPulseImage,
+                    frames: {
+                        max: 4,
+                        hold: 30 
+                    },
+                    animate: true,
+                    rotation
+                })
+
+                renderedSprites.push(dragonPulse)
+
+                gsap.to(dragonPulse.position, {
+                    x: recipient.position.x,
+                    y: recipient.position.y,
+                    onComplete: () => {
+                    //enemy gets hit
+                    gsap.to(healthBar, {
+                        width: `${this.health}%`
+                    })
+                    gsap.to(recipient.position, {
+                        x: recipient.position.x + 10,
+                        yoyo: true,
+                        repeat: 5,
+                        duration: 0.08
+                    })
+
+                    gsap.to(recipient, {
+                        opacity: 0,
+                        repeat: 5,
+                        yoyo: true,
+                        duration: 0.08 
+                    })
+                        renderedSprites.pop()
+                    }
+                })
                 break; 
 
 
