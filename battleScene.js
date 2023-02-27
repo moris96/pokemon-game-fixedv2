@@ -20,9 +20,6 @@ const battleBackground = new Sprite({
 })
 
 
-
-
-
 //DRAW POKEMON
 //elon = enemy 
 const elon = new Sprite({
@@ -35,7 +32,8 @@ const elon = new Sprite({
         max: 4,
         hold: 60 
     },
-    animate: true 
+    animate: true,
+    isEnemy: true 
 })
 
 //charizard = hero 
@@ -50,4 +48,23 @@ const charizard = new Sprite({
         hold: 60
     },
     animate: true 
+})
+
+
+
+////////////////////////BATTLE!!!/////////////////////////////////////////////////////////////////////////////
+
+
+
+document.querySelectorAll('button').forEach((button) => {
+    button.addEventListener('click', () => {
+        charizard.attack({
+            attack: {
+                name: 'Slash',
+                damage: 10,
+                type: 'Normal'
+            },
+            recipient: elon 
+        })
+    })
 })

@@ -288,30 +288,21 @@ function animateBattle(){
     charizard.draw()
 }
 
+// animate()
+animateBattle()
 
 
 
-
-// console.log(document.querySelectorAll('button'))
 // document.querySelectorAll('button').forEach((button) => {
 //     button.addEventListener('click', () => {
-//         charizard.attack({ attack: {
-//             name: 'Slash',
-//             damage: 10,
-//             type: 'Normal'
-//         },
-//         recipient: elon 
-//      })
+//         charizard.attack({
+//             attack: {
+//                 name: 'Slash',
+//                 damage: 10,
+//                 type: 'Normal'
+//             },
+//             recipient: elon
+//         })
 //     })
 // })
 
-
-
-
-
-
-
-
-//////////////////////////////////////////////////////////////////ANIMATE SCENES////////////////////////////////////////////////////
-// animate()
-animateBattle()
