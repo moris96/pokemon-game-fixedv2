@@ -16,6 +16,8 @@ body{
 
 
 
+
+
 /* battle scene */
 #attack-type-text{
     margin: 0;
@@ -60,6 +62,92 @@ body{
     justify-content: center;
     width: 33.33%;
     border-left: 4px solid black;
+}
+
+/* elon health */
+#five{
+    background-color: white;
+    width: 250px;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    border: 4px solid black;
+    padding: 12px;
+}
+#elon-name{
+    font-size: 16px;
+}
+#elon-level {
+    font-size: 16px;
+    position: absolute;
+    top: 9px;
+    right: 10px;
+}
+#elon-gender {
+    position: absolute;
+    top: 1px;
+    right: 180px;
+    color: blue;
+}
+#elon-parent{
+    position: relative;
+}
+#elon-health{
+    height: 5px;
+    background-color: #ccc;
+    margin-top: 10px;
+}
+#elon-health2{
+    height: 5px;
+    background-color: green;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    /* width: 50%; */
+}
+
+/* charizard health */
+#six{
+    background-color: white;
+    width: 250px;
+    position: absolute;
+    top: 300px;
+    right: 50px;
+    border: 4px solid black;
+    padding: 12px;
+}
+#charizard-name{
+    font-size: 16px;
+}
+#charizard-parent{
+    position: relative;
+}
+#charizard-gender{
+    color: red;
+    position: absolute;
+    top: 1px;
+    right: 100px;
+}
+#charizard-level {
+    font-size: 16px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+#charizard-health{
+    height: 5px;
+    background-color: #ccc;
+    margin-top: 10px;
+}
+#charizard-health2{
+    height: 5px;
+    background-color: green;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    /* width: 50%; */
 }
 
 button{

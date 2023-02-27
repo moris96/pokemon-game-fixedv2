@@ -71,7 +71,7 @@ const player = new Sprite({
     image: playerDownImage,
     frames: {
         max: 4,
-        hold: 30 
+        hold: 15
     },
     sprites: {
         up: playerUpImage,
