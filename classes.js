@@ -47,6 +47,8 @@ class Sprite {
             this.image.height
             )
 
+            ctx.restore()
+
             if(!this.animate) return 
             
             if(this.frames.max > 1){
@@ -57,10 +59,14 @@ class Sprite {
                 if(this.frames.val < this.frames.max - 1) this.frames.val++
                 else this.frames.val = 0 
             }
-
-            
     }
 }
+
+
+
+
+
+
 
 //create player
 const player = new Sprite({
