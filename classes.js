@@ -66,209 +66,7 @@ class Sprite {
                 else this.frames.val = 0 
             }
     }
-    // attack({ attack, recipient, renderedSprites }){
-    //     document.querySelector('#dialouge-box').style.display = 'block'
-    //     document.querySelector('#dialouge-box').innerHTML = `${this.name} used ${attack.name}!` 
-
-    //     const healthBar = this.isEnemy ? '#charizard-health2' : '#elon-health2'
-    //     this.health -= attack.damage
-
-    //     const rotation = this.isEnemy ? -2.2 : 1
-
-    //     const tl = gsap.timeline() 
-
-    //     const movementDistance = this.isEnemy ? -20 : 20 
-
-    //     switch(attack.name){
-    //         case 'Flamethrower':
-    //             const flamethrowerImage = new Image()
-    //             flamethrowerImage.src = './images/moves/flamethrower.png'
-    //             const flamethrower = new Sprite({
-    //                 position: {
-    //                     x: this.position.x,
-    //                     y: this.position.y 
-    //                 },
-    //                 image: flamethrowerImage,
-    //                 frames: {
-    //                     max: 4,
-    //                     hold: 30 
-    //                 },
-    //                 animate: true,
-    //                 rotation 
-    //             })
-
-    //             renderedSprites.splice(1, 0, flamethrower)
-
-    //             gsap.to(flamethrower.position, {
-    //                 x: recipient.position.x,
-    //                 y: recipient.position.y,
-    //                 onComplete: () => {
-    //                 //enemy gets hit
-    //                 gsap.to(healthBar, {
-    //                     width: `${this.health}%`
-    //                 })
-    //                 gsap.to(recipient.position, {
-    //                     x: recipient.position.x + 10,
-    //                     yoyo: true,
-    //                     repeat: 5,
-    //                     duration: 0.08
-    //                 })
-
-    //                 gsap.to(recipient, {
-    //                     opacity: 0,
-    //                     repeat: 5,
-    //                     yoyo: true,
-    //                     duration: 0.08 
-    //                 })
-    //                     renderedSprites.splice(1, 1)
-    //                 }
-    //             })
-    //             break; 
-
-    //             case 'Dragon Pulse':
-    //             const dragonPulseImage = new Image()
-    //             dragonPulseImage.src = './images/moves/dragonpulse.png'
-    //             const dragonPulse = new Sprite({
-    //                 position: {
-    //                     x: this.position.x,
-    //                     y: this.position.y 
-    //                 },
-    //                 image: dragonPulseImage,
-    //                 frames: {
-    //                     max: 4,
-    //                     hold: 30 
-    //                 },
-    //                 animate: true,
-    //                 rotation
-    //             })
-
-    //             renderedSprites.push(dragonPulse)
-
-    //             gsap.to(dragonPulse.position, {
-    //                 x: recipient.position.x,
-    //                 y: recipient.position.y,
-    //                 onComplete: () => {
-    //                 //enemy gets hit
-    //                 gsap.to(healthBar, {
-    //                     width: `${this.health}%`
-    //                 })
-    //                 gsap.to(recipient.position, {
-    //                     x: recipient.position.x + 10,
-    //                     yoyo: true,
-    //                     repeat: 5,
-    //                     duration: 0.08
-    //                 })
-
-    //                 gsap.to(recipient, {
-    //                     opacity: 0,
-    //                     repeat: 5,
-    //                     yoyo: true,
-    //                     duration: 0.08 
-    //                 })
-    //                     renderedSprites.pop()
-    //                 }
-    //             })
-    //             break; 
-
-
-
-
-    //         case 'Slash': 
-    //         // const tl = gsap.timeline() 
-
-    //     // const movementDistance = this.isEnemy ? -20 : 20 
-
-    //     tl.to(this.position, {
-    //         x: this.position.x - movementDistance
-    //     })
-    //     .to(this.position.x, {
-    //         x: this.position.x + movementDistance * 2,
-    //         duration: 0.1,
-    //         onComplete: () => {
-    //             //enemy gets hit
-    //             gsap.to(healthBar, {
-    //                 width: `${this.health}%`
-    //             })
-    //             gsap.to(recipient.position, {
-    //                 x: recipient.position.x + 10,
-    //                 yoyo: true,
-    //                 repeat: 5,
-    //                 duration: 0.08
-    //             })
-
-    //             gsap.to(recipient, {
-    //                 opacity: 0,
-    //                 repeat: 5,
-    //                 yoyo: true,
-    //                 duration: 0.08 
-    //             })
-    //         }
-    //     })
-    //     .to(this.position, {
-    //         x: this.position.x 
-    //     })
-    //         break; 
-
-    //     case 'Aerial Ace': 
-    //     tl.to(this.position, {
-    //         x: this.position.x - movementDistance
-    //     })
-    //     .to(this.position.x, {
-    //         x: this.position.x + movementDistance * 2,
-    //         duration: 0.1,
-    //         onComplete: () => {
-    //             //enemy gets hit
-    //             gsap.to(healthBar, {
-    //                 width: `${this.health}%`
-    //             })
-    //             gsap.to(recipient.position, {
-    //                 x: recipient.position.x + 10,
-    //                 yoyo: true,
-    //                 repeat: 5,
-    //                 duration: 0.08
-    //             })
-
-    //             gsap.to(recipient, {
-    //                 opacity: 0,
-    //                 repeat: 5,
-    //                 yoyo: true,
-    //                 duration: 0.08 
-    //             })
-    //         }
-    //     })
-    //     .to(this.position, {
-    //         x: this.position.x 
-    //     })
-    //         break; 
-
-
-
-
-    //     }
-
-        
-    // }
 };
-
-
-// document.querySelectorAll('button').forEach((button) => {
-//     button.addEventListener('click', () => {
-//         charizard.attack({
-//             attack: {
-//                 name: 'Slash',
-//                 damage: 10,
-//                 type: 'Normal'
-//             },
-//             recipient: elon
-//         })
-//     })
-// })
-
-
-
-
-
-
 
 //create player
 const player = new Sprite({
@@ -289,9 +87,7 @@ const player = new Sprite({
     }
 })
 
-
-
-
+//create background 
 const background = new Sprite({
     position: {
         x: -425,
@@ -300,9 +96,7 @@ const background = new Sprite({
     image 
 })
 
-
-
-
+//class for pokemon 
 class Monster extends Sprite{
     constructor({ position, image, frames = { max: 1, hold: 10 }, sprites, animate = false, rotation = 0, isEnemy = false, name, attacks }){
         super({
@@ -318,12 +112,22 @@ class Monster extends Sprite{
         this.name = name 
         this.attacks = attacks
     }
+    faint(){
+        document.querySelector('#dialouge-box').innerHTML = `${this.name} fainted!`
+        gsap.to(this.position, {
+            y: this.position.y + 20 
+        })
+        gsap.to(this, {
+            opacity: 0 
+        })
+    }
+
     attack({ attack, recipient, renderedSprites }){
         document.querySelector('#dialouge-box').style.display = 'block'
         document.querySelector('#dialouge-box').innerHTML = `${this.name} used ${attack.name}!` 
 
         const healthBar = this.isEnemy ? '#charizard-health2' : '#elon-health2'
-        this.health -= attack.damage
+        recipient.health -= attack.damage
 
         const rotation = this.isEnemy ? -2.2 : 1
 
@@ -357,7 +161,7 @@ class Monster extends Sprite{
                     onComplete: () => {
                     //enemy gets hit
                     gsap.to(healthBar, {
-                        width: `${this.health}%`
+                        width: `${recipient.health}%`
                     })
                     gsap.to(recipient.position, {
                         x: recipient.position.x + 10,
@@ -402,7 +206,7 @@ class Monster extends Sprite{
                     onComplete: () => {
                     //enemy gets hit
                     gsap.to(healthBar, {
-                        width: `${this.health}%`
+                        width: `${recipient.health}%`
                     })
                     gsap.to(recipient.position, {
                         x: recipient.position.x + 10,
@@ -423,14 +227,7 @@ class Monster extends Sprite{
                 })
                 break; 
 
-
-
-
         case 'Slash': 
-            // const tl = gsap.timeline() 
-
-        // const movementDistance = this.isEnemy ? -20 : 20 
-
         tl.to(this.position, {
             x: this.position.x - movementDistance
         })
@@ -440,7 +237,7 @@ class Monster extends Sprite{
             onComplete: () => {
                 //enemy gets hit
                 gsap.to(healthBar, {
-                    width: `${this.health}%`
+                    width: `${recipient.health}%`
                 })
                 gsap.to(recipient.position, {
                     x: recipient.position.x + 20,
@@ -472,7 +269,7 @@ class Monster extends Sprite{
             onComplete: () => {
                 //enemy gets hit
                 gsap.to(healthBar, {
-                    width: `${this.health}%`
+                    width: `${recipient.health}%`
                 })
                 gsap.to(recipient.position, {
                     x: recipient.position.x + 10,
@@ -493,18 +290,9 @@ class Monster extends Sprite{
             x: this.position.x 
         })
             break; 
-
-
-
-
-        }
-
-        
+        } 
     }
-}
-
-
-
+};
 
 
 /////////////////////////////////////////////////////////////////////////////////////// BOUNDARY CLASS ////////////////////////////////////////////////////////////////////////////////
@@ -570,19 +358,13 @@ battleZonesMap.forEach((row, i) => {
 })
 
 
-
-
-
-
+//keep this just in case for future updates
 // const testBoundary = new Boundary({
 //     position: {
 //         x: 400,
 //         y: 400
 //     }
 // })
-
-
-
 
 
 

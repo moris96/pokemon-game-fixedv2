@@ -81,6 +81,7 @@ const queue = []
 //event listeners for attack buttons 
 document.querySelectorAll('button').forEach((button) => {
     button.addEventListener('click', (e) => {
+        //charizard attacks!
         const selectedAttack = attacks[e.currentTarget.innerHTML]
         charizard.attack({
             attack: selectedAttack,
@@ -88,8 +89,14 @@ document.querySelectorAll('button').forEach((button) => {
             renderedSprites
         })
 
+        //elon faints 
+        if(elon.health <= 0){
+            queue.push(() => {
+                elon.faint()
+        })
+        }
+        //elon attacks!
         const randomAttack = elon.attacks[Math.floor(Math.random() * elon.attacks.length)]
-
         queue.push(() => {
             elon.attack({
                 attack: randomAttack,
@@ -97,6 +104,13 @@ document.querySelectorAll('button').forEach((button) => {
                 renderedSprites
             })
         })
+
+        //charizard faints 
+        if(charizard.health <= 0){
+            queue.push(() => {
+                charizard.faint()
+        })
+        }
 
     })
 
