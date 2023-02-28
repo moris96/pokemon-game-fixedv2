@@ -33,7 +33,8 @@ const elon = new Sprite({
         hold: 60 
     },
     animate: true,
-    isEnemy: true 
+    isEnemy: true,
+    name: 'Elon'
 })
 
 //charizard = hero 
@@ -47,7 +48,8 @@ const charizard = new Sprite({
         max: 4,
         hold: 60
     },
-    animate: true 
+    animate: true,
+    name: 'Charizard'
 })
 
 
@@ -56,9 +58,23 @@ const charizard = new Sprite({
 
 const renderedSprites = [elon, charizard]
 
+function animateBattle(){
+    window.requestAnimationFrame(animateBattle)
+    battleBackground.draw()
+    elon.draw()
+    charizard.draw()
 
+    renderedSprites.forEach((sprite) => {
+        sprite.draw()
+    })
+};
 
+// animate()
+animateBattle()
 
+const queue = [] 
+
+//event listeners for attack buttons 
 document.querySelectorAll('button').forEach((button) => {
     button.addEventListener('click', (e) => {
         const selectedAttack = attacks[e.currentTarget.innerHTML]
@@ -67,5 +83,28 @@ document.querySelectorAll('button').forEach((button) => {
             recipient: elon,
             renderedSprites
         })
+
+        queue.push(() => {
+            elon.attack({
+                attack: attacks.Flamethrower,
+                recipient: charizard,
+                renderedSprites
+            })
+        })
+
+        queue.push(() => {
+            elon.attack({
+                attack: attacks.DragonPulse,
+                recipient: charizard,
+                renderedSprites
+            })
+        })
     })
+})
+
+document.querySelector('#dialouge-box').addEventListener('click', (e) => {
+    if(queue.length > 0){
+        queue[0]()
+        queue.shift()
+    } else e.currentTarget.style.display = 'none'
 })

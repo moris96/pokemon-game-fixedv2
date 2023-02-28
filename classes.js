@@ -19,7 +19,7 @@ playerLeftImage.src = './images/player/playerLeft.png'
 
 /////////////////////////////////////////////////////////////////////////////////////// SPRITE CLASS //////////////////////////////////////////////////////////////////////////////////
 class Sprite {
-    constructor({ position, image, frames = { max: 1, hold: 10 }, sprites, animate = false, isEnemy = false, rotation = 0 }) {
+    constructor({ position, image, frames = { max: 1, hold: 10 }, sprites, animate = false, isEnemy = false, rotation = 0, name }) {
         this.position = position
         this.image = image 
         this.frames = {...frames, val: 0, elapsed: 0}
@@ -35,6 +35,7 @@ class Sprite {
         this.health = 100 
         this.isEnemy = isEnemy
         this.rotation = rotation
+        this.name = name 
         
     }
     draw(){
@@ -69,6 +70,9 @@ class Sprite {
             }
     }
     attack({ attack, recipient, renderedSprites }){
+        document.querySelector('#dialouge-box').style.display = 'block'
+        document.querySelector('#dialouge-box').innerHTML = `${this.name} used ${attack.name}!` 
+
         const healthBar = this.isEnemy ? '#charizard-health2' : '#elon-health2'
         this.health -= attack.damage
 

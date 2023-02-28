@@ -59,6 +59,7 @@ body{
     background-color: white;
     padding: 12px;
     display: none;
+    cursor: pointer;
 }
 
 #three{
