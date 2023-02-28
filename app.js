@@ -2,6 +2,7 @@
 //load & draw canvas
 const canvas = document.querySelector('canvas')
 const ctx = canvas.getContext('2d')
+// audio.Map.play()
 canvas.width = 1024
 canvas.height = 576 
 ctx.fillStyle = 'white'
@@ -322,3 +323,12 @@ function animate(){
 //     })
 // })
 
+
+let clicked = false 
+addEventListener('click', () => {
+    if(!clicked){
+        audio.Map.play()
+        clicked = true 
+    }
+    
+})

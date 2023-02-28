@@ -14,9 +14,9 @@ body{
     color: ghostwhite;
 }
 
-/* #user-interface{
+#user-interface{
     display: none;
-} */
+}
 
 #attack-type-text{
     margin: 0;

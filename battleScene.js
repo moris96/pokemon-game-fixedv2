@@ -177,9 +177,11 @@ function animateBattle(){
         sprite.draw()
     })
 };
-// animate()
-initBattle()
-animateBattle()
+
+animate()
+// initBattle()
+// animateBattle()
+
 
 
 document.querySelector('#dialouge-box').addEventListener('click', (e) => {
