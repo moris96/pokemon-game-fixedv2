@@ -1,9 +1,9 @@
 @import url('https://fonts.cdnfonts.com/css/press-start-2p');
 
-/* global vars */
+
 *{
-    /* text-align: center; */
     font-family: 'Press Start 2P', sans-serif;
+    /* text-align: center; */
 }
 
 body{
@@ -14,11 +14,10 @@ body{
     color: ghostwhite;
 }
 
+/* #user-interface{
+    display: none;
+} */
 
-
-
-
-/* battle scene */
 #attack-type-text{
     margin: 0;
     font-size: 16px;
@@ -37,6 +36,8 @@ body{
     bottom: 0;
     left: 0;
     opacity: 0;
+    pointer-events: none;
+    z-index: 10;
 }
 
 #two{
@@ -76,7 +77,6 @@ body{
     border-left: 4px solid black;
 }
 
-/* elon health */
 #five{
     background-color: white;
     width: 250px;
@@ -116,10 +116,7 @@ body{
     top: 0;
     left: 0;
     right: 0;
-    /* width: 50%; */
 }
-
-/* charizard health */
 #six{
     background-color: white;
     width: 250px;
@@ -159,7 +156,6 @@ body{
     top: 0;
     left: 0;
     right: 0;
-    /* width: 50%; */
 }
 
 button{

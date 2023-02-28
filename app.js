@@ -152,6 +152,7 @@ function animate(){
                             duration: 0.4,
                             onComplete() {
                                 //activate new animation loop
+                                initBattle()
                                 animateBattle()
                                 gsap.to('#overlapping-div', {
                                     opacity: 0,
@@ -278,6 +279,8 @@ function animate(){
     }) 
     return;
 }
+
+// animate()
 
 
 // // const renderedSprites = []
