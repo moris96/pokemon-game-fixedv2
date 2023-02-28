@@ -74,6 +74,10 @@ class Sprite {
 
         const rotation = this.isEnemy ? -2.2 : 1
 
+        const tl = gsap.timeline() 
+
+        const movementDistance = this.isEnemy ? -20 : 20 
+
         switch(attack.name){
             case 'Flamethrower':
                 const flamethrowerImage = new Image()
@@ -169,9 +173,9 @@ class Sprite {
 
 
             case 'Slash': 
-            const tl = gsap.timeline() 
+            // const tl = gsap.timeline() 
 
-        const movementDistance = this.isEnemy ? -20 : 20 
+        // const movementDistance = this.isEnemy ? -20 : 20 
 
         tl.to(this.position, {
             x: this.position.x - movementDistance
@@ -203,6 +207,42 @@ class Sprite {
             x: this.position.x 
         })
             break; 
+
+        case 'Aerial Ace': 
+        tl.to(this.position, {
+            x: this.position.x - movementDistance
+        })
+        .to(this.position.x, {
+            x: this.position.x + movementDistance * 2,
+            duration: 0.1,
+            onComplete: () => {
+                //enemy gets hit
+                gsap.to(healthBar, {
+                    width: `${this.health}%`
+                })
+                gsap.to(recipient.position, {
+                    x: recipient.position.x + 10,
+                    yoyo: true,
+                    repeat: 5,
+                    duration: 0.08
+                })
+
+                gsap.to(recipient, {
+                    opacity: 0,
+                    repeat: 5,
+                    yoyo: true,
+                    duration: 0.08 
+                })
+            }
+        })
+        .to(this.position, {
+            x: this.position.x 
+        })
+            break; 
+
+
+
+
         }
 
         
