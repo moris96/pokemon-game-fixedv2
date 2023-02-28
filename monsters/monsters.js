@@ -1,11 +1,18 @@
+// //elon
+// const elonImage = new Image()
+// elonImage.src = './images/pokes/elon.png'
+// //charizard
+// const charizardImage = new Image()
+// charizardImage.src = './images/pokes/charizard.png'
+
 // const monsters = {
 //     Charizard: {
 //         position: {
-//             x: 200,
-//             y: 230
+//             x: 210,
+//             y: 250
 //         },
 //         image: {
-//             src: './pokes/charizard.png'
+//             src: charizardImage
 //         },
 //         frames: {
 //             max: 4,
@@ -18,15 +25,15 @@
 
 //     Elon: {
 //         position: {
-//             x: 690,
-//             y: 50
+//             x: 670,
+//             y: 60
 //         },
 //         image: {
-//             src: './pokes/elon.png'
+//             src: elonImage
 //         },
 //         frames: {
 //             max: 4,
-//             hold: 30
+//             hold: 60
 //         },
 //         animate: true,
 //         isEnemy: true, 
@@ -34,3 +41,4 @@
 //         attacks: [attacks.Flamethrower, attacks.DragonPulse, attacks.AerialAce, attacks.Slash]
 //     }
 // }
+

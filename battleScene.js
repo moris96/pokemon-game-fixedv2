@@ -2,10 +2,9 @@
 //battle background 
 const battleBackgroundImage = new Image()
 battleBackgroundImage.src = './images/battleBackground.png'
-//elon
+
 const elonImage = new Image()
 elonImage.src = './images/pokes/elon.png'
-//charizard
 const charizardImage = new Image()
 charizardImage.src = './images/pokes/charizard.png'
 
@@ -20,9 +19,8 @@ const battleBackground = new Sprite({
 })
 
 
-//DRAW POKEMON
-//elon = enemy 
-const elon = new Sprite({
+// DRAW POKEMON
+const elon = new Monster({
     position: {
         x: 670,
         y: 60
@@ -34,11 +32,11 @@ const elon = new Sprite({
     },
     animate: true,
     isEnemy: true,
-    name: 'Elon'
+    name: 'Elon',
+    attacks: [attacks.Flamethrower, attacks.DragonPulse, attacks.AerialAce, attacks.Slash]
 })
 
-//charizard = hero 
-const charizard = new Sprite({
+const charizard = new Monster({
     position: {
         x: 210,
         y: 250
@@ -49,14 +47,22 @@ const charizard = new Sprite({
         hold: 60
     },
     animate: true,
-    name: 'Charizard'
+    name: 'Charizard',
+    attacks: [attacks.Flamethrower, attacks.DragonPulse, attacks.AerialAce, attacks.Slash]
 })
 
 
 
 ////////////////////////BATTLE!!!/////////////////////////////////////////////////////////////////////////////
 
+
 const renderedSprites = [elon, charizard]
+
+charizard.attacks.forEach((attack) => {
+    const button = document.createElement('button')
+    button.innerHTML = attack.name 
+    document.querySelector('#attacks-box').append(button)
+})
 
 function animateBattle(){
     window.requestAnimationFrame(animateBattle)
@@ -68,8 +74,6 @@ function animateBattle(){
         sprite.draw()
     })
 };
-
-// animate()
 animateBattle()
 
 const queue = [] 
@@ -92,13 +96,6 @@ document.querySelectorAll('button').forEach((button) => {
             })
         })
 
-        queue.push(() => {
-            elon.attack({
-                attack: attacks.DragonPulse,
-                recipient: charizard,
-                renderedSprites
-            })
-        })
     })
 })
 

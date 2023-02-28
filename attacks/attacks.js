@@ -6,7 +6,7 @@ const attacks = {
         color: 'black'
     },
     AerialAce: {
-        name: 'Aerial Ace',
+        name: 'AerialAce',
         damage: 10,
         type: 'Flying',
         color: '#5A5A5A'
@@ -18,7 +18,7 @@ const attacks = {
         color: 'red'
     },
     DragonPulse: {
-        name: 'Dragon Pulse',
+        name: 'DragonPulse',
         damage: 20,
         type: 'Dragon',
         color: 'indigo'
