@@ -88,9 +88,11 @@ document.querySelectorAll('button').forEach((button) => {
             renderedSprites
         })
 
+        const randomAttack = elon.attacks[Math.floor(Math.random() * elon.attacks.length)]
+
         queue.push(() => {
             elon.attack({
-                attack: attacks.Flamethrower,
+                attack: randomAttack,
                 recipient: charizard,
                 renderedSprites
             })
