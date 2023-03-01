@@ -120,6 +120,8 @@ class Monster extends Sprite{
         gsap.to(this, {
             opacity: 0 
         })
+        audio.battle.stop()
+        audio.Map.play()
     }
 
     attack({ attack, recipient, renderedSprites }){
@@ -306,7 +308,7 @@ class Boundary {
         this.height = 48
     }
     draw(){
-        ctx.fillStyle = 'rgba(255, 0, 0, 0.5)'
+        ctx.fillStyle = 'rgba(255, 0, 0, 0)'
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height)
     }
 }

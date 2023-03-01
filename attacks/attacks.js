@@ -13,7 +13,7 @@ const attacks = {
     },
     Flamethrower: {
         name: 'Flamethrower',
-        damage: 250,
+        damage: 25,
         type: 'Fire',
         color: 'red'
     },

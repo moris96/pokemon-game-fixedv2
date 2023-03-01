@@ -1,30 +1,13 @@
-
 //load & draw canvas
 const canvas = document.querySelector('canvas')
 const ctx = canvas.getContext('2d')
-// audio.Map.play()
 canvas.width = 1024
 canvas.height = 576 
 ctx.fillStyle = 'white'
 ctx.fillRect(0,0,canvas.width,canvas.height)
 
 
-
-// const battleZonesMap = []
-// for(let i=0; i<battleZones.length; i+=70){
-//     battleZonesMap.push(battleZones.slice(i, 70+i))
-// }
-// console.log(battleZonesMap)
-
-
-// gsap.to('#overlapping-div', {
-//     opacity: 1,
-//     repeat: 3,
-//     yoyo: true,
-//     duration: 0.4
-// })
-
-
+//keys for movement 
 const keys = {
     w: {
         pressed: false 
@@ -39,10 +22,6 @@ const keys = {
         pressed: false 
     }
 }
-
-
-
-
 
 //player mobility
 window.addEventListener('keydown', (e) => {
@@ -84,8 +63,7 @@ window.addEventListener('keyup', (e) => {
 
 
 
-
-
+//collision detection equation 
 function rectangularCollision({rectangle1, rectangle2}){
     return(rectangle1.position.x + rectangle1.width >= rectangle2.position.x 
         && rectangle1.position.x <= rectangle2.position.x + rectangle2.width 
@@ -94,11 +72,10 @@ function rectangularCollision({rectangle1, rectangle2}){
 }
 
 
+//initiate battle 
 const battle = {
     initiated: false 
 }
-
-
 
 
 /////////////////////////////////////////////////////////////////////////////////////// ANIMATE GAME //////////////////////////////////////////////////////////////////////////////////
@@ -127,6 +104,7 @@ function animate(){
 
     if(battle.initiated) return 
 
+    //activate a battle 
     if(keys.w.pressed || keys.a.pressed || keys.s.pressed || keys.d.pressed){
         for (const battleZone of battleZones) {
             const overlappingArea = (Math.min(player.position.x + player.width, battleZone.position.x + battleZone.width) - Math.max(player.position.x, battleZone.position.x)) * Math.min(player.position.y + player.height, battleZone.position.y + battleZone.height) - Math.max(player.position.y, battleZone.position.y)
@@ -138,15 +116,18 @@ function animate(){
                 overlappingArea > (player.width * player.height) / 2
                 && Math.random() < 0.001
             ) {
-                console.log('activate battle')
+                // console.log('activate battle')
                 //deactivate current animation loop 
                 window.cancelAnimationFrame(animationID)
+
+                audio.Map.stop()
+                audio.battle.play()
                 battle.initiated = true 
                 gsap.to('#overlapping-div', {
                     opacity: 1,
                     repeat: 3,
                     yoyo: true,
-                    duration: 0.4,
+                    duration: 0.7,
                     onComplete(){
                         gsap.to('#overlapping-div', {
                             opacity: 1,
@@ -167,11 +148,6 @@ function animate(){
             }
         }
     }
-
-    
-
-    // ctx.drawImage(playerDownImage, 0, 0, playerDownImage.width/4, playerDownImage.height, canvas.width/2 - playerDownImage.width/2, canvas.height/2 - playerDownImage.height/4, playerDownImage.width/4, playerDownImage.height)
-
 
     //player mobility 
     if(keys.w.pressed && lastKey==='w'){
@@ -284,45 +260,6 @@ function animate(){
 // animate()
 
 
-// // const renderedSprites = []
-// function animateBattle(){
-//     window.requestAnimationFrame(animateBattle)
-//     battleBackground.draw()
-//     elon.draw()
-//     charizard.draw()
-
-//     renderedSprites.forEach((sprite) => {
-//         sprite.draw()
-//     })
-// };
-
-// // animate()
-// animateBattle()
-
-
-
-
-
-
-
-
-
-
-
-
-// document.querySelectorAll('button').forEach((button) => {
-//     button.addEventListener('click', () => {
-//         charizard.attack({
-//             attack: {
-//                 name: 'Slash',
-//                 damage: 10,
-//                 type: 'Normal'
-//             },
-//             recipient: elon
-//         })
-//     })
-// })
-
 
 let clicked = false 
 addEventListener('click', () => {
@@ -332,3 +269,5 @@ addEventListener('click', () => {
     }
     
 })
+
+

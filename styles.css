@@ -10,10 +10,17 @@ body{
     background-color: black;
 }
 
-#welcome-msg{
+/* #welcome-msg{
+    color: ghostwhite;
+} */
+
+#info{
     color: ghostwhite;
 }
 
+
+
+/* battle scene */
 #user-interface{
     display: none;
 }
