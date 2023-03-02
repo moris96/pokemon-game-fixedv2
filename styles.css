@@ -18,6 +18,15 @@ body{
     color: ghostwhite;
 }
 
+a{
+    color: ghostwhite;
+    transition-duration: 1s;
+    /* text-align: center; */
+}
+a:hover{
+    color: blue;
+}
+
 
 
 /* battle scene */
